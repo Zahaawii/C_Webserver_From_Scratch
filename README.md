@@ -11,8 +11,15 @@ There will be two parts:
 Part A)
 Create a simple socket connection that displays the received connection in the console.
 
-Part 2)
+Part B)
 Receives the request and sends an HTML file as a response with headers and file.
 
 
 ## Further details will come
+
+
+
+# Notes
+
+- https://www.geeksforgeeks.org/c/socket-programming-cc/
+- https://www.w3schools.com/c/c_date_time.php
