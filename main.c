@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <string.h>
 // #include <arpa/inet.h> 
 
 #define PORT 8080
@@ -13,7 +14,20 @@ void logging(char* text, ...);
 
 int main (void)
 {
-  
+    // Open the HTML file
+    FILE *html_index = fopen("index.html", "r");
+    if(html_index == NULL) {
+        perror("error opening HTML page");
+        return 1;
+    }
+
+    char response_data[1024];
+    fgets(response_data, 1024, html_index);
+
+    // append the response data with the http header to send the response
+    char http_header[2048] = "HTTP/1.1 200 OK \r\n\n";
+    strcat(http_header, response_data);
+
     char* init_server_message = "Web server has been reached by the client!";
     logging("Web server started!");
 
@@ -32,19 +46,19 @@ int main (void)
     bind(server_socket_addr, (struct sockaddr*) &server_ip_address, sizeof(server_ip_address));
     logging("Succesfully binded the socket to the specified address");
     
-    // Let the server stay open until closed by intention
-    
     // Listen for client connections
     listen(server_socket_addr, 10);
     logging("Started listening for client connections");
-    int i = 1;
-    while(i == 1) {
+
+    // Let the server stay open until closed by intention
+    int client_socket;
+    while(1) {
     // Two way connection, send and receive data both ways
-    int client_socket = accept(server_socket_addr, NULL, NULL);
+    client_socket = accept(server_socket_addr, NULL, NULL);
     logging("Started to way connection with", client_socket);
 
     printf("Succesfully connected: %i\n", client_socket);
-    send(client_socket, init_server_message, sizeof(init_server_message), 0);
+    send(client_socket, http_header, sizeof(http_header), 0);
     }
         
     return 0;
