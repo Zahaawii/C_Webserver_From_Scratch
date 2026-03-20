@@ -43,7 +43,12 @@ int main (void)
     logging("Succesfully defined the servers address");
 
     // Bind the socket to our specified IP and port
-    bind(server_socket_addr, (struct sockaddr*) &server_ip_address, sizeof(server_ip_address));
+    int bind_status = bind(server_socket_addr, (struct sockaddr*) &server_ip_address, sizeof(server_ip_address));
+    if(bind_status < 0) {
+        logging("Error binding");
+        perror("accept");
+        exit(1);
+    }
     logging("Succesfully binded the socket to the specified address");
     
     // Listen for client connections
