@@ -24,3 +24,35 @@ Thu Mar 19 20:47:26 2026
 : Started listening for client connections
 Thu Mar 19 20:47:28 2026
 : Started to way connection with
+Thu Mar 26 14:05:20 2026
+: Web server started!
+Thu Mar 26 14:05:20 2026
+: Succesfully initialized the server socket:
+Thu Mar 26 14:05:20 2026
+: Succesfully defined the servers address
+Thu Mar 26 14:05:20 2026
+: Error binding
+Thu Mar 26 14:05:34 2026
+: Web server started!
+Thu Mar 26 14:05:34 2026
+: Succesfully initialized the server socket:
+Thu Mar 26 14:05:34 2026
+: Succesfully defined the servers address
+Thu Mar 26 14:05:34 2026
+: Error binding
+Thu Mar 26 14:16:57 2026
+: Web server started!
+Thu Mar 26 14:16:57 2026
+: Succesfully initialized the server socket:
+Thu Mar 26 14:16:57 2026
+: Succesfully defined the servers address
+Thu Mar 26 14:16:57 2026
+: Error binding
+Thu Mar 26 14:17:01 2026
+: Web server started!
+Thu Mar 26 14:17:01 2026
+: Succesfully initialized the server socket:
+Thu Mar 26 14:17:01 2026
+: Succesfully defined the servers address
+Thu Mar 26 14:17:01 2026
+: Error binding
