@@ -30,6 +30,7 @@ int main(void)
 
     // append the response data with the http header to send the response
     char http_header[2048] = "HTTP/1.1 200 OK \r\n\n";
+    char http_header_not_found[2048] = "HTTP/1.1 404 Not Found \r\n\n";
     strcat(http_header, response_data);
 
     char *init_server_message = "Web server has been reached by the client!";
@@ -91,14 +92,20 @@ int main(void)
 
         char method[BUFFER_SIZE], uri[BUFFER_SIZE], version[BUFFER_SIZE];
         sscanf(buffer, "%s %s %s", method, uri, version);
-        printf("[%s:%u] %s %s %s\n", inet_ntoa(client_addr.sin_addr),
-        ntohs(client_addr.sin_port), method, version, uri);
+        printf("[%s:%u] %s %s %s\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), method, version, uri);
 
+        char *index = "index.html";
+
+        if(strstr(uri, index) != NULL) {
         int writeValue = write(client_socket, http_header, strlen(http_header));
-        if (writeValue < 0)
-        {
+
+        if (writeValue < 0) {
             perror("Error");
             continue;
+        }
+
+        } else {
+            write(client_socket, http_header_not_found, strlen(http_header_not_found));
         }
         close(client_socket);
     }
@@ -125,4 +132,6 @@ void logging(char *text, ...)
     fprintf(logFile, "%s: %s\n", ctime(&currentTime), text);
     printf("==========================================\n");
     printf("%s: %s \n", ctime(&currentTime), text);
+
+    fclose(logFile);
 }

@@ -23,3 +23,7 @@ Receives the request and sends an HTML file as a response with headers and file.
 
 - https://www.geeksforgeeks.org/c/socket-programming-cc/
 - https://www.w3schools.com/c/c_date_time.php
+- https://www.w3schools.com/c/ref_stdio_sscanf.php
+- https://bruinsslot.jp/post/simple-http-webserver-in-c/
+- https://www.geeksforgeeks.org/computer-networks/simple-client-server-application-in-c/
+- 
