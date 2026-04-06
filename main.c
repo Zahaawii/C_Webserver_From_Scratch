@@ -8,15 +8,17 @@
 #include <string.h>
 #include <arpa/inet.h>
 
+// Store final variables to save redudancy
 #define PORT 8080
 #define BUFFER_SIZE 1024
 
+// Initialize functions 
 void logging(char *text, ...);
 
 int main(void)
 {
 
-    // Open the HTML file
+    // Open the HTML file and storing the data
     FILE *html_index = fopen("index.html", "r");
     if (html_index == NULL)
     {
@@ -24,6 +26,7 @@ int main(void)
         return 1;
     }
 
+    // Open 404 html and storing the data
     FILE *html_notFound = fopen("notfound.html", "r");
     if (html_notFound == NULL)
     {
@@ -31,11 +34,14 @@ int main(void)
         return 1;
     }
 
+    // initialize respone data and not found data
     char buffer[BUFFER_SIZE];
-    char response_data[1024];
-    char response_data_notfound[1024];
-    fgets(response_data, 1024, html_index);
-    fgets(response_data_notfound, 1024, html_notFound);
+    char response_data[BUFFER_SIZE];
+    char response_data_notfound[BUFFER_SIZE];
+
+    // Stores the input from the files into the array
+    fgets(response_data, BUFFER_SIZE, html_index);
+    fgets(response_data_notfound, BUFFER_SIZE, html_notFound);
 
     // append the response data with the http header to send the response
     char http_header[2048] = "HTTP/1.1 200 OK \r\n\n";
@@ -43,6 +49,7 @@ int main(void)
     strcat(http_header, response_data);
     strcat(http_header_not_found, response_data_notfound);
 
+    // Prompting the terminal window to show the application has started
     char *init_server_message = "Web server has been reached by the client!";
     logging("Web server started!");
 
@@ -100,26 +107,40 @@ int main(void)
         }
         printf("Succesfully connected: %i\n", readValue);
 
+        // Take the clients request and print the first line in the terminal :: TODO change to the whole request
         char method[BUFFER_SIZE], uri[BUFFER_SIZE], version[BUFFER_SIZE];
         sscanf(buffer, "%s %s %s", method, uri, version);
         printf("[%s:%u] %s %s %s\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), method, version, uri);
 
+        // Initialize index string to make match the client request to the only html file
         char *index = "index.html";
 
+        // Compare uri and the index
         if(strstr(uri, index) != NULL) {
+        
+        // Send the html data to the client
         int writeValue = write(client_socket, http_header, strlen(http_header));
 
+        // Error handling if values is less than 0 and continue the loop instead of crashing the program
         if (writeValue < 0) {
             perror("Error");
             continue;
         }
 
         } else {
+            // If the URI doesnt meet requirements "index.html" send 404 not found
             write(client_socket, http_header_not_found, strlen(http_header_not_found));
         }
+
+        // Succesfully close the socket
         close(client_socket);
     }
 
+    // Close the files after being used
+    fclose(html_index);
+    fclose(html_notFound);
+
+    // Show that the web server has been terminated
     return 0;
 }
 
