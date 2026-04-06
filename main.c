@@ -24,14 +24,24 @@ int main(void)
         return 1;
     }
 
+    FILE *html_notFound = fopen("notfound.html", "r");
+    if (html_notFound == NULL)
+    {
+        perror("error opening HTML page");
+        return 1;
+    }
+
     char buffer[BUFFER_SIZE];
     char response_data[1024];
+    char response_data_notfound[1024];
     fgets(response_data, 1024, html_index);
+    fgets(response_data_notfound, 1024, html_notFound);
 
     // append the response data with the http header to send the response
     char http_header[2048] = "HTTP/1.1 200 OK \r\n\n";
     char http_header_not_found[2048] = "HTTP/1.1 404 Not Found \r\n\n";
     strcat(http_header, response_data);
+    strcat(http_header_not_found, response_data_notfound);
 
     char *init_server_message = "Web server has been reached by the client!";
     logging("Web server started!");
