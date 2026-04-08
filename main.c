@@ -39,15 +39,41 @@ int main(void)
     char response_data[BUFFER_SIZE];
     char response_data_notfound[BUFFER_SIZE];
 
+
     // Stores the input from the files into the array
     fgets(response_data, BUFFER_SIZE, html_index);
     fgets(response_data_notfound, BUFFER_SIZE, html_notFound);
 
-    // append the response data with the http header to send the response
-    char http_header[2048] = "HTTP/1.1 200 OK \r\n\n";
-    char http_header_not_found[2048] = "HTTP/1.1 404 Not Found \r\n\n";
-    strcat(http_header, response_data);
-    strcat(http_header_not_found, response_data_notfound);
+    // append the response data with the http header to send the response :: TODO change this to remove redudancy
+    char http_header[2048] =
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: text/html\r\n"
+    "\r\n";
+
+    char http_header_not_found[2048] = 
+    "HTTP/1.1 404 NOT FOUND\r\n"
+    "Content-Type: text/html\r\n"
+    "\r\n";
+
+    char http_header_jpeg[2048] =
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: image/jpeg\r\n"
+    "\r\n";
+
+    char http_header_gif[2048] =
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: image/gif\r\n"
+    "\r\n";
+
+    char http_header_mp3[2048] =
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: audio/mpeg\r\n"
+    "\r\n";
+
+    char http_header_pdf[2048] =
+    "HTTP/1.1 200 OK\r\n"
+    "Content-Type: application/pdf\r\n"
+    "\r\n";
 
     // Prompting the terminal window to show the application has started
     char *init_server_message = "Web server has been reached by the client!";
@@ -112,22 +138,42 @@ int main(void)
         sscanf(buffer, "%s %s %s", method, uri, version);
         printf("[%s:%u] %s %s %s\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), method, version, uri);
 
-        // Initialize index string to make match the client request to the only html file
-        char *index = "index.html";
-
         // Compare uri and the index
-        if(strstr(uri, index) != NULL) {
+        if(strstr(uri, "index.html") != NULL) {
         
-        // Send the html data to the client
-        int writeValue = write(client_socket, http_header, strlen(http_header));
+        // Send the html header to the client
+        int responseValue = write(client_socket, http_header, sizeof(http_header));
+        if (responseValue < 0) {
+            perror("Error");
+            continue;
+        }
+        // Send the html body to the client
+        int bodyValue = write(client_socket, response_data, sizeof(response_data));
+        if (bodyValue < 0) {
+            perror("Error");
+           continue;
+        }
 
         // Error handling if values is less than 0 and continue the loop instead of crashing the program
-        if (writeValue < 0) {
+        if (responseValue < 0) {
             perror("Error");
             continue;
         }
 
-        } else {
+        } else if (strstr(uri, ".gif") != NULL) {
+            printf("GIF\n");
+
+        } else if (strstr(uri, ".jpeg") != NULL) {
+            printf("jpeg\n");
+
+        } else if (strstr(uri, ".pdf") != NULL) {
+            printf("pdf\n");
+
+        } else if (strstr(uri, ".mp3") != NULL) {
+            printf("mp3\n");
+        }
+        
+        else {
             // If the URI doesnt meet requirements "index.html" send 404 not found
             write(client_socket, http_header_not_found, strlen(http_header_not_found));
         }

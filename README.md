@@ -14,6 +14,8 @@ Create a simple socket connection that displays the received connection in the c
 Part B)
 Receives the request and sends an HTML file as a response with headers and file.
 
+Part C)
+Support response header with content type and support jpeg, mp3, pdf and gifs
 
 ## Further details will come
 
