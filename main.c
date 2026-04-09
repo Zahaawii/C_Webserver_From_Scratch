@@ -118,7 +118,7 @@ int main(void)
 
         // Two way connection, send and receive data both ways
         int client_socket = accept(server_socket_addr, (struct sockaddr *)&server_ip_address, (socklen_t *)&server_ip_address_len);
-        logging("Started to way connection with");
+        logging("Started to way connection");
         if (client_socket < 0)
         {
             perror("Error");
