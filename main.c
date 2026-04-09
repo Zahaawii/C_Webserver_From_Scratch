@@ -142,13 +142,13 @@ int main(void)
         if(strstr(uri, "index.html") != NULL) {
         
         // Send the html header to the client
-        int responseValue = write(client_socket, http_header, sizeof(http_header));
+        int responseValue = write(client_socket, http_header, strlen(http_header));
         if (responseValue < 0) {
             perror("Error");
             continue;
         }
         // Send the html body to the client
-        int bodyValue = write(client_socket, response_data, sizeof(response_data));
+        int bodyValue = write(client_socket, response_data, strlen(response_data));
         if (bodyValue < 0) {
             perror("Error");
            continue;

@@ -22,3 +22,31 @@ Wed Apr  8 17:01:19 2026
 : Started to way connection with
 Wed Apr  8 17:01:23 2026
 : Started to way connection with
+Thu Apr  9 15:47:58 2026
+: Web server started!
+Thu Apr  9 15:47:58 2026
+: Succesfully initialized the server socket:
+Thu Apr  9 15:47:58 2026
+: Succesfully defined the servers address
+Thu Apr  9 15:47:58 2026
+: Succesfully binded the socket to the specified address
+Thu Apr  9 15:47:58 2026
+: Started listening for client connections
+Thu Apr  9 15:48:11 2026
+: Started to way connection with
+Thu Apr  9 15:48:11 2026
+: Started to way connection with
+Thu Apr  9 15:48:18 2026
+: Started to way connection with
+Thu Apr  9 15:48:18 2026
+: Started to way connection with
+Thu Apr  9 15:48:19 2026
+: Started to way connection with
+Thu Apr  9 15:48:19 2026
+: Started to way connection with
+Thu Apr  9 15:48:19 2026
+: Started to way connection with
+Thu Apr  9 15:48:24 2026
+: Started to way connection with
+Thu Apr  9 15:48:24 2026
+: Started to way connection with
