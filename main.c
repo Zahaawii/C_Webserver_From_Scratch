@@ -75,8 +75,7 @@ int main(void)
     "Content-Type: application/pdf\r\n"
     "\r\n";
 
-    // Prompting the terminal window to show the application has started
-    char *init_server_message = "Web server has been reached by the client!";
+    // printing the terminal window to show the application has started
     logging("Web server started!");
 
     // Initialize/create the server socket
@@ -119,7 +118,7 @@ int main(void)
 
         // Two way connection, send and receive data both ways
         int client_socket = accept(server_socket_addr, (struct sockaddr *)&server_ip_address, (socklen_t *)&server_ip_address_len);
-        logging("Started to way connection with", client_socket);
+        logging("Started to way connection with");
         if (client_socket < 0)
         {
             perror("Error");
@@ -133,8 +132,9 @@ int main(void)
         }
         printf("Succesfully connected: %i\n", readValue);
 
-        // Take the clients request and print the first line in the terminal :: TODO change to the whole request
+        // Take the clients request and print the request in the terminal and log it in the file
         char method[BUFFER_SIZE], uri[BUFFER_SIZE], version[BUFFER_SIZE];
+        logging(buffer);
         sscanf(buffer, "%s %s %s", method, uri, version);
         printf("[%s:%u] %s %s %s\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), method, version, uri);
 
