@@ -174,7 +174,7 @@ int main(void)
         }
         
         else {
-            // If the URI doesnt meet requirements "index.html" send 404 not found
+            // If the URI doesnt meet requirements "html, gif, jpeg, pdf, mp3" send 404 not found
             write(client_socket, http_header_not_found, strlen(http_header_not_found));
         }
 
