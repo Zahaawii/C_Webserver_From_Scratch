@@ -19,7 +19,7 @@ int main(void)
 {
 
     // Open the HTML file and storing the data
-    FILE *html_index = fopen("index.html", "r");
+    FILE *html_index = fopen("./files/index.html", "r");
     if (html_index == NULL)
     {
         perror("error opening HTML page");
@@ -27,13 +27,28 @@ int main(void)
     }
 
     // Open 404 html and storing the data
-    FILE *html_notFound = fopen("notfound.html", "r");
+    FILE *html_notFound = fopen("./files/notfound.html", "r");
     if (html_notFound == NULL)
     {
         perror("error opening HTML page");
         return 1;
     }
 
+    // Open picture in binary
+    FILE *picture = fopen("./files/panda.jpeg", "rb");
+    if (picture == NULL) {
+        perror("Error opening jpeg");
+        return 1;
+    }
+
+    // Open picture in binary
+    FILE *GIF = fopen("./files/giphy.gif", "rb");
+    if (picture == NULL) {
+        perror("Error opening jpeg");
+        return 1;
+    }
+
+    
     // initialize respone data and not found data
     char buffer[BUFFER_SIZE];
     char response_data[BUFFER_SIZE];
@@ -53,6 +68,7 @@ int main(void)
     char http_header_not_found[2048] = 
     "HTTP/1.1 404 NOT FOUND\r\n"
     "Content-Type: text/html\r\n"
+    "Content-Length: 9999\r\n"
     "\r\n";
 
     char http_header_jpeg[2048] =
@@ -161,9 +177,33 @@ int main(void)
         }
 
         } else if (strstr(uri, ".gif") != NULL) {
+            int responseValue = write(client_socket, http_header_gif, strlen(http_header_gif));
+            if (responseValue < 0) {
+            perror("Error");
+            continue;
+            }
+
+            ssize_t bytesRead;
+            unsigned char gifBuffer[BUFFER_SIZE];
+            while ((bytesRead = fread(gifBuffer, 1 ,sizeof(gifBuffer), GIF)) > 0 ) {
+                write(client_socket,gifBuffer, bytesRead);
+            }
+
             printf("GIF\n");
 
         } else if (strstr(uri, ".jpeg") != NULL) {
+            int responseValue = write(client_socket, http_header_jpeg, strlen(http_header_jpeg));
+            if (responseValue < 0) {
+            perror("Error");
+            continue;
+            }
+
+            ssize_t bytesRead;
+            unsigned char jpegBuffer[BUFFER_SIZE];
+            while ((bytesRead = fread(jpegBuffer, 1 ,sizeof(jpegBuffer), picture)) > 0 ) {
+                write(client_socket,jpegBuffer, bytesRead);
+            }
+
             printf("jpeg\n");
 
         } else if (strstr(uri, ".pdf") != NULL) {
@@ -185,6 +225,8 @@ int main(void)
     // Close the files after being used
     fclose(html_index);
     fclose(html_notFound);
+    fclose(GIF);
+    fclose(picture);
 
     // Show that the web server has been terminated
     return 0;
@@ -200,7 +242,7 @@ void logging(char *text, ...)
     time_t currentTime;
     time(&currentTime);
 
-    FILE *logFile = fopen("Logfile.txt", "a");
+    FILE *logFile = fopen("./files/Logfile.txt", "a");
     if (logFile == NULL)
     {
         printf("Logfile doesn't exist\n");
