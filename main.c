@@ -182,12 +182,16 @@ int main(void)
         }
 
         } else if (strstr(uri, ".gif") != NULL) {
+
+            // Send the HTML header for gifs to the client 
             int responseValue = write(client_socket, http_header_gif, strlen(http_header_gif));
+            // Error handling
             if (responseValue < 0) {
             perror("Error");
             continue;
             }
-
+        
+            // Create variables to store the binary data and send it to the client
             ssize_t bytesRead;
             unsigned char gifBuffer[BUFFER_SIZE];
             while ((bytesRead = fread(gifBuffer, 1 ,sizeof(gifBuffer), GIF)) > 0 ) {
@@ -197,12 +201,15 @@ int main(void)
             printf("GIF\n");
 
         } else if (strstr(uri, ".jpeg") != NULL) {
+
+            // Send the header to the client to show its a jpeg
             int responseValue = write(client_socket, http_header_jpeg, strlen(http_header_jpeg));
             if (responseValue < 0) {
             perror("Error");
             continue;
             }
-
+        
+            // Create variables to store the binary data from the files and sent it to the client
             ssize_t bytesRead;
             unsigned char jpegBuffer[BUFFER_SIZE];
             while ((bytesRead = fread(jpegBuffer, 1 ,sizeof(jpegBuffer), picture)) > 0 ) {
@@ -212,12 +219,15 @@ int main(void)
             printf("jpeg\n");
 
         } else if (strstr(uri, ".pdf") != NULL) {
+
+            // Send the header to the client to show its a pdf
             int responseValue = write(client_socket, http_header_pdf, strlen(http_header_pdf));
                 if (responseValue < 0) {
                     perror("Error");
                     continue;
                     }
 
+                    // Create variables to store the data and send it to the client until there is no longer data in the file
                     ssize_t bytesRead;
                     unsigned char pdfBuffer[BUFFER_SIZE];
                     while ((bytesRead = fread(pdfBuffer, 1, sizeof(pdfBuffer), PDF)) > 0 ) {
