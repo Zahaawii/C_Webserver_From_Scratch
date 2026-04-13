@@ -43,8 +43,14 @@ int main(void)
 
     // Open picture in binary
     FILE *GIF = fopen("./files/giphy.gif", "rb");
-    if (picture == NULL) {
-        perror("Error opening jpeg");
+    if (GIF == NULL) {
+        perror("Error opening gif");
+        return 1;
+    }
+
+    FILE *PDF = fopen("./files/PDF_TestPage.pdf", "rb");
+    if (PDF == NULL) {
+        perror("Error opening PDF");
         return 1;
     }
 
@@ -68,7 +74,6 @@ int main(void)
     char http_header_not_found[2048] = 
     "HTTP/1.1 404 NOT FOUND\r\n"
     "Content-Type: text/html\r\n"
-    "Content-Length: 9999\r\n"
     "\r\n";
 
     char http_header_jpeg[2048] =
@@ -207,6 +212,18 @@ int main(void)
             printf("jpeg\n");
 
         } else if (strstr(uri, ".pdf") != NULL) {
+            int responseValue = write(client_socket, http_header_pdf, strlen(http_header_pdf));
+                if (responseValue < 0) {
+                    perror("Error");
+                    continue;
+                    }
+
+                    ssize_t bytesRead;
+                    unsigned char pdfBuffer[BUFFER_SIZE];
+                    while ((bytesRead = fread(pdfBuffer, 1, sizeof(pdfBuffer), PDF)) > 0 ) {
+                        write(client_socket, pdfBuffer, bytesRead);
+                    }
+
             printf("pdf\n");
 
         } else if (strstr(uri, ".mp3") != NULL) {
