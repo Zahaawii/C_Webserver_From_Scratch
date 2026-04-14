@@ -12,7 +12,7 @@
 #define PORT 8080
 #define BUFFER_SIZE 1024
 
-// Initialize functions 
+// Initialize functions
 void logging(char *text, ...);
 
 int main(void)
@@ -36,30 +36,38 @@ int main(void)
 
     // Open picture in binary
     FILE *picture = fopen("./files/panda.jpeg", "rb");
-    if (picture == NULL) {
+    if (picture == NULL)
+    {
         perror("Error opening jpeg");
         return 1;
     }
 
     // Open picture in binary
     FILE *GIF = fopen("./files/giphy.gif", "rb");
-    if (GIF == NULL) {
+    if (GIF == NULL)
+    {
         perror("Error opening gif");
         return 1;
     }
 
     FILE *PDF = fopen("./files/PDF_TestPage.pdf", "rb");
-    if (PDF == NULL) {
+    if (PDF == NULL)
+    {
         perror("Error opening PDF");
         return 1;
     }
 
-    
+    FILE *MP3 = fopen("./files/mp3sound.mp3", "r");
+    if (MP3 == NULL)
+    {
+        perror("error opening MP3");
+        return 1;
+    }
+
     // initialize respone data and not found data
     char buffer[BUFFER_SIZE];
     char response_data[BUFFER_SIZE];
     char response_data_notfound[BUFFER_SIZE];
-
 
     // Stores the input from the files into the array
     fgets(response_data, BUFFER_SIZE, html_index);
@@ -67,34 +75,34 @@ int main(void)
 
     // append the response data with the http header to send the response :: TODO change this to remove redudancy
     char http_header[2048] =
-    "HTTP/1.1 200 OK\r\n"
-    "Content-Type: text/html\r\n"
-    "\r\n";
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: text/html\r\n"
+        "\r\n";
 
-    char http_header_not_found[2048] = 
-    "HTTP/1.1 404 NOT FOUND\r\n"
-    "Content-Type: text/html\r\n"
-    "\r\n";
+    char http_header_not_found[2048] =
+        "HTTP/1.1 404 NOT FOUND\r\n"
+        "Content-Type: text/html\r\n"
+        "\r\n";
 
     char http_header_jpeg[2048] =
-    "HTTP/1.1 200 OK\r\n"
-    "Content-Type: image/jpeg\r\n"
-    "\r\n";
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: image/jpeg\r\n"
+        "\r\n";
 
     char http_header_gif[2048] =
-    "HTTP/1.1 200 OK\r\n"
-    "Content-Type: image/gif\r\n"
-    "\r\n";
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: image/gif\r\n"
+        "\r\n";
 
     char http_header_mp3[2048] =
-    "HTTP/1.1 200 OK\r\n"
-    "Content-Type: audio/mpeg\r\n"
-    "\r\n";
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: audio/mpeg\r\n"
+        "\r\n";
 
     char http_header_pdf[2048] =
-    "HTTP/1.1 200 OK\r\n"
-    "Content-Type: application/pdf\r\n"
-    "\r\n";
+        "HTTP/1.1 200 OK\r\n"
+        "Content-Type: application/pdf\r\n"
+        "\r\n";
 
     // printing the terminal window to show the application has started
     logging("Web server started!");
@@ -160,87 +168,118 @@ int main(void)
         printf("[%s:%u] %s %s %s\n", inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), method, version, uri);
 
         // Compare uri and the index
-        if(strstr(uri, "index.html") != NULL) {
-        
-        // Send the html header to the client
-        int responseValue = write(client_socket, http_header, strlen(http_header));
-        if (responseValue < 0) {
-            perror("Error");
-            continue;
-        }
-        // Send the html body to the client
-        int bodyValue = write(client_socket, response_data, strlen(response_data));
-        if (bodyValue < 0) {
-            perror("Error");
-           continue;
-        }
+        if (strstr(uri, "index.html") != NULL)
+        {
 
-        // Error handling if values is less than 0 and continue the loop instead of crashing the program
-        if (responseValue < 0) {
-            perror("Error");
-            continue;
+            // Send the html header to the client
+            int responseValue = write(client_socket, http_header, strlen(http_header));
+            if (responseValue < 0)
+            {
+                perror("Error");
+                continue;
+            }
+            // Send the html body to the client
+            int bodyValue = write(client_socket, response_data, strlen(response_data));
+            if (bodyValue < 0)
+            {
+                perror("Error");
+                continue;
+            }
+
+            // Error handling if values is less than 0 and continue the loop instead of crashing the program
+            if (responseValue < 0)
+            {
+                perror("Error");
+                continue;
+            }
         }
+        else if (strstr(uri, ".gif") != NULL)
+        {
 
-        } else if (strstr(uri, ".gif") != NULL) {
-
-            // Send the HTML header for gifs to the client 
+            // Send the HTML header for gifs to the client
             int responseValue = write(client_socket, http_header_gif, strlen(http_header_gif));
             // Error handling
-            if (responseValue < 0) {
-            perror("Error");
-            continue;
+            if (responseValue < 0)
+            {
+                perror("Error");
+                continue;
             }
-        
+
             // Create variables to store the binary data and send it to the client
             ssize_t bytesRead;
             unsigned char gifBuffer[BUFFER_SIZE];
-            while ((bytesRead = fread(gifBuffer, 1 ,sizeof(gifBuffer), GIF)) > 0 ) {
-                write(client_socket,gifBuffer, bytesRead);
+            while ((bytesRead = fread(gifBuffer, 1, sizeof(gifBuffer), GIF)) > 0)
+            {
+                write(client_socket, gifBuffer, bytesRead);
             }
 
             printf("GIF\n");
-
-        } else if (strstr(uri, ".jpeg") != NULL) {
+        }
+        else if (strstr(uri, ".jpeg") != NULL)
+        {
 
             // Send the header to the client to show its a jpeg
             int responseValue = write(client_socket, http_header_jpeg, strlen(http_header_jpeg));
-            if (responseValue < 0) {
-            perror("Error");
-            continue;
+            if (responseValue < 0)
+            {
+                perror("Error");
+                continue;
             }
-        
+
             // Create variables to store the binary data from the files and sent it to the client
             ssize_t bytesRead;
             unsigned char jpegBuffer[BUFFER_SIZE];
-            while ((bytesRead = fread(jpegBuffer, 1 ,sizeof(jpegBuffer), picture)) > 0 ) {
-                write(client_socket,jpegBuffer, bytesRead);
+            while ((bytesRead = fread(jpegBuffer, 1, sizeof(jpegBuffer), picture)) > 0)
+            {
+                write(client_socket, jpegBuffer, bytesRead);
             }
 
             printf("jpeg\n");
-
-        } else if (strstr(uri, ".pdf") != NULL) {
+        }
+        else if (strstr(uri, ".pdf") != NULL)
+        {
 
             // Send the header to the client to show its a pdf
             int responseValue = write(client_socket, http_header_pdf, strlen(http_header_pdf));
-                if (responseValue < 0) {
-                    perror("Error");
-                    continue;
-                    }
+            if (responseValue < 0)
+            {
+                perror("Error");
+                continue;
+            }
 
-                    // Create variables to store the data and send it to the client until there is no longer data in the file
-                    ssize_t bytesRead;
-                    unsigned char pdfBuffer[BUFFER_SIZE];
-                    while ((bytesRead = fread(pdfBuffer, 1, sizeof(pdfBuffer), PDF)) > 0 ) {
-                        write(client_socket, pdfBuffer, bytesRead);
-                    }
+            // Create variables to store the data and send it to the client until there is no longer data in the file
+            ssize_t bytesRead;
+            unsigned char pdfBuffer[BUFFER_SIZE];
+            while ((bytesRead = fread(pdfBuffer, 1, sizeof(pdfBuffer), PDF)) > 0)
+            {
+                write(client_socket, pdfBuffer, bytesRead);
+            }
 
             printf("pdf\n");
+        }
+        else if (strstr(uri, ".mp3") != NULL)
+        {
 
-        } else if (strstr(uri, ".mp3") != NULL) {
+            int responseValue = write(client_socket, http_header_mp3, strlen(http_header_mp3));
+            if (responseValue < 0)
+            {
+                perror("Error");
+                continue;
+            }
+
+            // Create variables to store the data and send it to the client until there is no longer data in the file
+            ssize_t bytesRead;
+            unsigned char mp3Buffer[BUFFER_SIZE];
+            while ((bytesRead = fread(mp3Buffer, 1, sizeof(mp3Buffer), MP3)) > 0)
+            {
+                write(client_socket, mp3Buffer, bytesRead);
+            }
+
             printf("mp3\n");
         }
-        
-        else {
+
+        else
+        {
             // If the URI doesnt meet requirements "html, gif, jpeg, pdf, mp3" send 404 not found
             write(client_socket, http_header_not_found, strlen(http_header_not_found));
         }

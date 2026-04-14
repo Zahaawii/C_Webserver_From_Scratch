@@ -1,0 +1,56 @@
+Tue Apr 14 09:00:41 2026
+: Web server started!
+Tue Apr 14 09:00:41 2026
+: Succesfully initialized the server socket:
+Tue Apr 14 09:00:41 2026
+: Succesfully defined the servers address
+Tue Apr 14 09:00:41 2026
+: Succesfully binded the socket to the specified address
+Tue Apr 14 09:00:41 2026
+: Started listening for client connections
+Tue Apr 14 09:00:53 2026
+: Started to way connection
+Tue Apr 14 09:00:53 2026
+: GET /test.mp3 HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
+Tue Apr 14 09:00:53 2026
+: Started to way connection
+Tue Apr 14 09:00:53 2026
+: GET /test.mp3 HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua-platform: "macOS"
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+sec-ch-ua-mobile: ?0
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: video
+Referer: http://localhost:8080/test.mp3
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+Range: bytes=0-
+
+r, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
