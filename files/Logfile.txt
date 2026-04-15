@@ -54,3 +54,319 @@ Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
 Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
 
 
+Wed Apr 15 15:59:53 2026
+: Web server started!
+Wed Apr 15 15:59:53 2026
+: Succesfully initialized the server socket:
+Wed Apr 15 15:59:53 2026
+: Succesfully defined the servers address
+Wed Apr 15 15:59:53 2026
+: Succesfully binded the socket to the specified address
+Wed Apr 15 15:59:53 2026
+: Started listening for client connections
+Wed Apr 15 15:59:55 2026
+: Started to way connection
+Wed Apr 15 15:59:55 2026
+: GET / HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Sec-Purpose: prefetch;prerender
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 15:59:55 2026
+: Started to way connection
+Wed Apr 15 15:59:55 2026
+: GET / HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 15:59:55 2026
+: Started to way connection
+Wed Apr 15 15:59:57 2026
+: GET /index.html HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Sec-Purpose: prefetch;prerender
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 15:59:59 2026
+: Started to way connection
+Wed Apr 15 15:59:59 2026
+: GET /index.gif HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 15:59:59 2026
+: Started to way connection
+Wed Apr 15 15:59:59 2026
+: GET /favicon.ico HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua-platform: "macOS"
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8080/index.gif
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:12 2026
+: Web server started!
+Wed Apr 15 16:02:12 2026
+: Succesfully initialized the server socket:
+Wed Apr 15 16:02:12 2026
+: Succesfully defined the servers address
+Wed Apr 15 16:02:12 2026
+: Succesfully binded the socket to the specified address
+Wed Apr 15 16:02:12 2026
+: Started listening for client connections
+Wed Apr 15 16:02:17 2026
+: Started to way connection
+Wed Apr 15 16:02:17 2026
+: GET / HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Sec-Purpose: prefetch;prerender
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:19 2026
+: Started to way connection
+Wed Apr 15 16:02:19 2026
+: GET /index.html HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Sec-Purpose: prefetch;prerender
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:23 2026
+: Started to way connection
+Wed Apr 15 16:02:23 2026
+: GET /index.gif HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:23 2026
+: Started to way connection
+Wed Apr 15 16:02:25 2026
+: GET /index.mp3 HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:25 2026
+: Started to way connection
+Wed Apr 15 16:02:25 2026
+: GET /index.mp3 HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua-platform: "macOS"
+Accept-Encoding: identity;q=1, *;q=0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: video
+Referer: http://localhost:8080/index.mp3
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+Range: bytes=0-
+
+, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:28 2026
+: Started to way connection
+Wed Apr 15 16:02:28 2026
+: GET /index.jpeg HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:02:28 2026
+: Started to way connection
+Wed Apr 15 16:17:15 2026
+: Web server started!
+Wed Apr 15 16:17:15 2026
+: Succesfully initialized the server socket:
+Wed Apr 15 16:17:15 2026
+: Succesfully defined the servers address
+Wed Apr 15 16:17:15 2026
+: Succesfully binded the socket to the specified address
+Wed Apr 15 16:17:15 2026
+: Started listening for client connections
+Wed Apr 15 16:17:21 2026
+: Started to way connection
+Wed Apr 15 16:17:21 2026
+: GET /index.gif HTTP/1.1
+Host: localhost:8080
+Connection: keep-alive
+sec-ch-ua: "Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "macOS"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: da-DK,da;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: Idea-9aeb2ab3=d99889b6-54b0-44a6-b2c5-40646c276f01
+
+
+Wed Apr 15 16:17:40 2026
+: Web server started!
+Wed Apr 15 16:17:40 2026
+: Succesfully initialized the server socket:
+Wed Apr 15 16:17:40 2026
+: Succesfully defined the servers address
+Wed Apr 15 16:17:40 2026
+: Error binding

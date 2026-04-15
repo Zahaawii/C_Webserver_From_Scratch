@@ -15,6 +15,21 @@
 // Initialize functions
 void logging(char *text, ...);
 
+FILE *test(char *fileType,char *readFile) {
+
+    char *fileDirectory = "./files/index.";
+    strcat(fileDirectory, fileType);
+
+    FILE *fileName = fopen(fileDirectory, "r");
+    if (fileName == NULL)
+    {
+        perror("error opening HTML page");
+        exit(0);
+    }
+
+    return fileName;
+}
+
 int main(void)
 {
 
@@ -205,14 +220,14 @@ int main(void)
                 continue;
             }
 
-            // Create variables to store the binary data and send it to the client
-            ssize_t bytesRead;
+            // Create variables to store the binary data and send it to the client &
+            int bytesRead;
             unsigned char gifBuffer[BUFFER_SIZE];
-            while ((bytesRead = fread(gifBuffer, 1, sizeof(gifBuffer), GIF)) > 0)
+            FILE *test1 = test("gif", "rb");
+            while ((bytesRead = fread(gifBuffer, 1, sizeof(gifBuffer), test1)) > 0)
             {
                 write(client_socket, gifBuffer, bytesRead);
             }
-
             printf("GIF\n");
         }
         else if (strstr(uri, ".jpeg") != NULL)
@@ -227,7 +242,7 @@ int main(void)
             }
 
             // Create variables to store the binary data from the files and sent it to the client
-            ssize_t bytesRead;
+            int bytesRead;
             unsigned char jpegBuffer[BUFFER_SIZE];
             while ((bytesRead = fread(jpegBuffer, 1, sizeof(jpegBuffer), picture)) > 0)
             {
@@ -248,7 +263,7 @@ int main(void)
             }
 
             // Create variables to store the data and send it to the client until there is no longer data in the file
-            ssize_t bytesRead;
+            int bytesRead;
             unsigned char pdfBuffer[BUFFER_SIZE];
             while ((bytesRead = fread(pdfBuffer, 1, sizeof(pdfBuffer), PDF)) > 0)
             {
@@ -268,7 +283,7 @@ int main(void)
             }
 
             // Create variables to store the data and send it to the client until there is no longer data in the file
-            ssize_t bytesRead;
+            int bytesRead;
             unsigned char mp3Buffer[BUFFER_SIZE];
             while ((bytesRead = fread(mp3Buffer, 1, sizeof(mp3Buffer), MP3)) > 0)
             {
