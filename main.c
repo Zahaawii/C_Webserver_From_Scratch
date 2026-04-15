@@ -14,79 +14,13 @@
 
 // Initialize functions
 void logging(char *text, ...);
-
-FILE *test(char *fileType,char *readFile) {
-
-    char *fileDirectory = "./files/index.";
-    strcat(fileDirectory, fileType);
-
-    FILE *fileName = fopen(fileDirectory, "r");
-    if (fileName == NULL)
-    {
-        perror("error opening HTML page");
-        exit(0);
-    }
-
-    return fileName;
-}
+FILE *test(char *openFileName,char *fileType, char *readFile);
 
 int main(void)
 {
-
-    // Open the HTML file and storing the data
-    FILE *html_index = fopen("./files/index.html", "r");
-    if (html_index == NULL)
-    {
-        perror("error opening HTML page");
-        return 1;
-    }
-
-    // Open 404 html and storing the data
-    FILE *html_notFound = fopen("./files/notfound.html", "r");
-    if (html_notFound == NULL)
-    {
-        perror("error opening HTML page");
-        return 1;
-    }
-
-    // Open picture in binary
-    FILE *picture = fopen("./files/panda.jpeg", "rb");
-    if (picture == NULL)
-    {
-        perror("Error opening jpeg");
-        return 1;
-    }
-
-    // Open picture in binary
-    FILE *GIF = fopen("./files/giphy.gif", "rb");
-    if (GIF == NULL)
-    {
-        perror("Error opening gif");
-        return 1;
-    }
-
-    FILE *PDF = fopen("./files/PDF_TestPage.pdf", "rb");
-    if (PDF == NULL)
-    {
-        perror("Error opening PDF");
-        return 1;
-    }
-
-    FILE *MP3 = fopen("./files/mp3sound.mp3", "r");
-    if (MP3 == NULL)
-    {
-        perror("error opening MP3");
-        return 1;
-    }
-
     // initialize respone data and not found data
     char buffer[BUFFER_SIZE];
-    char response_data[BUFFER_SIZE];
-    char response_data_notfound[BUFFER_SIZE];
 
-    // Stores the input from the files into the array
-    fgets(response_data, BUFFER_SIZE, html_index);
-    fgets(response_data_notfound, BUFFER_SIZE, html_notFound);
 
     // append the response data with the http header to send the response :: TODO change this to remove redudancy
     char http_header[2048] =
@@ -185,6 +119,18 @@ int main(void)
         // Compare uri and the index
         if (strstr(uri, "index.html") != NULL)
         {
+            
+            char response_data[BUFFER_SIZE];
+            FILE *html_index = test("index",".html", "r");
+            if(html_index == NULL) 
+            {
+                perror("Error");
+                continue;
+            }
+
+            // Stores the input from the files into the array
+            fgets(response_data, BUFFER_SIZE, html_index);
+
 
             // Send the html header to the client
             int responseValue = write(client_socket, http_header, strlen(http_header));
@@ -223,8 +169,15 @@ int main(void)
             // Create variables to store the binary data and send it to the client &
             int bytesRead;
             unsigned char gifBuffer[BUFFER_SIZE];
-            FILE *test1 = test("gif", "rb");
-            while ((bytesRead = fread(gifBuffer, 1, sizeof(gifBuffer), test1)) > 0)
+
+            FILE *GIF = test("giphy",".gif", "rb");
+            if(GIF == NULL) 
+            {
+                perror("Error");
+                continue;
+            }
+
+            while ((bytesRead = fread(gifBuffer, 1, sizeof(gifBuffer), GIF)) > 0)
             {
                 write(client_socket, gifBuffer, bytesRead);
             }
@@ -244,6 +197,14 @@ int main(void)
             // Create variables to store the binary data from the files and sent it to the client
             int bytesRead;
             unsigned char jpegBuffer[BUFFER_SIZE];
+
+            FILE *picture = test("panda",".jpeg", "rb");
+            if(picture == NULL) 
+            {
+                perror("Error");
+                continue;
+            }
+
             while ((bytesRead = fread(jpegBuffer, 1, sizeof(jpegBuffer), picture)) > 0)
             {
                 write(client_socket, jpegBuffer, bytesRead);
@@ -265,6 +226,14 @@ int main(void)
             // Create variables to store the data and send it to the client until there is no longer data in the file
             int bytesRead;
             unsigned char pdfBuffer[BUFFER_SIZE];
+
+            FILE *PDF = test("PDF_TestPage",".pdf", "rb");
+            if(PDF == NULL) 
+            {
+                perror("Error");
+                continue;
+            }
+
             while ((bytesRead = fread(pdfBuffer, 1, sizeof(pdfBuffer), PDF)) > 0)
             {
                 write(client_socket, pdfBuffer, bytesRead);
@@ -285,18 +254,38 @@ int main(void)
             // Create variables to store the data and send it to the client until there is no longer data in the file
             int bytesRead;
             unsigned char mp3Buffer[BUFFER_SIZE];
+
+            FILE *MP3 = test("mp3sound", ".mp3", "rb");
+
+            if(MP3 == NULL) {
+                perror("Error");
+                continue;
+            }
+
             while ((bytesRead = fread(mp3Buffer, 1, sizeof(mp3Buffer), MP3)) > 0)
             {
                 write(client_socket, mp3Buffer, bytesRead);
             }
 
-            printf("mp3\n");
+            fclose(MP3);
         }
 
         else
         {
+            char response_data_notfound[BUFFER_SIZE];
+            FILE *html_notFound = test("notfound",".html", "r");
+            if(html_notFound == NULL) 
+            {
+                perror("Error");
+                continue;
+            }
+
+            // Stores the input from the files into the array
+            fgets(response_data_notfound, BUFFER_SIZE, html_notFound);
+
             // If the URI doesnt meet requirements "html, gif, jpeg, pdf, mp3" send 404 not found
             write(client_socket, http_header_not_found, strlen(http_header_not_found));
+            fclose(html_notFound);
         }
 
         // Succesfully close the socket
@@ -304,10 +293,6 @@ int main(void)
     }
 
     // Close the files after being used
-    fclose(html_index);
-    fclose(html_notFound);
-    fclose(GIF);
-    fclose(picture);
 
     // Show that the web server has been terminated
     return 0;
@@ -334,4 +319,23 @@ void logging(char *text, ...)
     printf("%s: %s \n", ctime(&currentTime), text);
 
     fclose(logFile);
+}
+
+// Open the file and read the input and return it. Insteaad of redudant code, we optimize to create a function that does the same thing
+FILE *test(char *openFileName,char *fileType, char *readFile) {
+
+    char *fileDirectory = "./files/";
+    char result[100];
+    snprintf(result, sizeof(result), "%s%s%s", fileDirectory, openFileName, fileType);
+
+    printf("%s\n", result);
+
+    FILE *fileName = fopen(result, readFile);
+    if (fileName == NULL)
+    {
+        perror("error: ");
+        exit(0);
+    }
+
+    return fileName;
 }
