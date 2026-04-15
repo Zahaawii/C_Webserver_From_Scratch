@@ -18,9 +18,8 @@ FILE *test(char *openFileName,char *fileType, char *readFile);
 
 int main(void)
 {
-    // initialize respone data and not found data
+    // Initialize a global buffer to use
     char buffer[BUFFER_SIZE];
-
 
     // append the response data with the http header to send the response :: TODO change this to remove redudancy
     char http_header[2048] =
